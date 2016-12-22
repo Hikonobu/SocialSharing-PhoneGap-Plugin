@@ -1,5 +1,6 @@
 #import "SocialSharing.h"
 #import "NSString+URLEncoding.h"
+#import "ActivityItemSource.h"
 #import <Cordova/CDV.h>
 #import <Social/Social.h>
 #import <Foundation/NSException.h>
@@ -92,7 +93,7 @@ static NSString *const kShareOptionUrl = @"url";
     NSMutableArray *activityItems = [[NSMutableArray alloc] init];
 
     if (message != (id)[NSNull null] && message != nil) {
-    [activityItems addObject:message];
+    [activityItems [[StringSource alloc] initWithText:message subject:subject]];
     }
 
     if (filenames != (id)[NSNull null] && filenames != nil && filenames.count > 0) {
